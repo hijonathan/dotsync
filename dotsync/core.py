@@ -32,7 +32,7 @@ def check_status(config):
 
 def add_file(args, config):
     if not config.destination and not args['--destination']:
-        sys.stderr.write("The heck should I put this stuff?.\n\nInclude a --dir argument, or set a default directory in your dotsync config.\n")
+        sys.stderr.write("The heck should I put this stuff?.\n\nInclude a --destination argument, or set a default directory in your dotsync config.\n")
         return 1
 
     result = config.add_file(
