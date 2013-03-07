@@ -82,7 +82,9 @@ def main(args):
     # load config file
     config = Config.load(os.path.expanduser(args['--config']))
 
-    # handle adding / removing files
+    if args['status']:
+        return check_status(config)
+
     if args['add']:
         return add_file(args, config)
     elif args['remove']:
