@@ -10,11 +10,11 @@ class TrackedFile(object):
     def is_valid(self):
         return self.source and self.destination
 
-    def is_synced(self):
+    def is_saved(self):
         # Not yet implemented
         return False
 
-    def sync(self):
+    def save(self):
         if not os.path.exists(self.destination) or not os.path.isdir(self.destination):
             os.mkdir(self.destination)
             logging.info('Created a new directory for your tracked files at %s', self.destination)

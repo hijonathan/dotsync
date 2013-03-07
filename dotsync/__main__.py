@@ -2,9 +2,9 @@
 """
 
 Usage:
-  dotsync sync [options]
   dotsync add <source> [--destination=<destination>] [options]
   dotsync remove <source> [options]
+  dotsync save [options]
 
 Options:
   -c --config=<config>      Configuration file [default: ~/.moxie.yaml]

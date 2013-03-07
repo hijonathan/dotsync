@@ -22,7 +22,7 @@ def check_status(config):
     # Show linked files
     for tracked_file in config.tracked_files:
         aligned_file = "{0} -> {1}".format(tracked_file.source, tracked_file.destination).ljust(width, ' ')
-        if tracked_file.is_synced():
+        if tracked_file.is_saved():
             sys.stdout.write("{0} {1}\n".format(aligned_file, colored('TRACKED', 'green')))
         else:
             sys.stdout.write("{0} {1}\n".format(aligned_file, "UNTRACKED"))
@@ -42,7 +42,7 @@ def add_file(args, config):
 
     if result:
         config.save(os.path.expanduser(args['--config']))
-        sys.stderr.write("Added file. Run \"dotsync\" to sync your file.\n")
+        sys.stderr.write("Added file. Run \"dotsync save\" to save your file.\n")
         return 0
     else:
         sys.stderr.write("Failed to add file.\n")
@@ -61,14 +61,11 @@ def remove_file(args, config):
         return 1
 
 
-def sync_files(config):
+def save_files(config):
     # Loop through configured files.
     for tracked_file in config.tracked_files:
-        tracked_file.sync()
-        # copy_existing(home_path, backup_dir)
-        # remove_existing(home_path)
+        tracked_file.save()
 
-        # make_symlink(dotfile_path, home_path)
 
 
 def main(args):
@@ -89,8 +86,8 @@ def main(args):
         return 1
 
     # handle other commands
-    if args['sync']:
-        return sync_files(config)
+    if args['save']:
+        return save_files(config)
 
     sys.stderr.write("Nothing to do.\n")  # shit.
     return 1
