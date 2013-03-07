@@ -17,7 +17,7 @@ def init_logging(args):
 
 def check_status(config):
     # Calculate max host and port width for alignment
-    width = max([len("{0}:{1}".format(f.source, f.destination)) for f in config.tracked_files])
+    width = max([len("{0} -> {1}".format(f.source, f.destination)) for f in config.tracked_files])
 
     # Show linked files
     for tracked_file in config.tracked_files:
@@ -88,12 +88,11 @@ def main(args):
     elif args['remove']:
         return remove_file(args, config)
 
-    # bail out if no files configured
+    # Bail out if no files configured
     if len(config.files) == 0:
         sys.stderr.write("No files configured.\n\nAdd one via the \"dotsync add\" command or by editing {0}\n".format(args['--config']))
         return 1
 
-    # handle other commands
     if args['save']:
         return save_files(config)
     elif args['restore']:
