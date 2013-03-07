@@ -67,6 +67,14 @@ def save_files(config):
         tracked_file.save()
 
 
+def restore_files(args, config):
+    if not config.destination and not args['--destination']:
+        sys.stderr.write("Where should I restore your settings from?.\n\nInclude a --destination argument, or set a default directory in your dotsync config.\n")
+        return 1
+
+    config.restore()
+    return 0
+
 
 def main(args):
     init_logging(args)
@@ -88,6 +96,8 @@ def main(args):
     # handle other commands
     if args['save']:
         return save_files(config)
+    elif args['restore']:
+        return restore_files(args, config)
 
     sys.stderr.write("Nothing to do.\n")  # shit.
     return 1

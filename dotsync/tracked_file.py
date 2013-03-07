@@ -26,6 +26,10 @@ class TrackedFile(object):
 
         logging.info("Successfully copied and symlink'd %s to %s", self.source, self.destination)
 
+    def restore(self):
+        os.symlink(self.source, self.destination)
+        logging.info("Successfully symlink'd %s to %s", self.source, self.destination)
+
     def __getstate__(self):
         return {
             'source': self.source,

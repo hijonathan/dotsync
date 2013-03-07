@@ -91,3 +91,7 @@ class Config(object):
     def save(self, filename):
         with closing(open(filename, 'w')) as fp:
             fp.write(yaml.dump(self.__getstate__()))
+
+    def restore(self):
+        for tracked_file in self.tracked_files_by_source:
+            tracked_file.restore()

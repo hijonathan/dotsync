@@ -5,6 +5,7 @@ Usage:
   dotsync add <source> [--destination=<destination>] [options]
   dotsync remove <source> [options]
   dotsync save [options]
+  dotsync restore [--destination=<destination>] [options]
 
 Options:
   -c --config=<config>      Configuration file [default: ~/.moxie.yaml]
