@@ -42,3 +42,14 @@ Got too carried away? Tell dotsync to put a file back where it found it.
 Starting from a new machine and need to get back your dotfiles? This is what dotsync was made for.
 
     > dotsync restore ~/path/to/backup/dotsync.yaml
+
+
+## TODO
+
+- Tight github integration with save/restore.
+
+## Acknowledgements
+
+@tpetr for creating HubSpot/moxie, upon which the structure of this code is based.
+
+United Airlines flight #357 for being excruciatingly long and wifi-less.
